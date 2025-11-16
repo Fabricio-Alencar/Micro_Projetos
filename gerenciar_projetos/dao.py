@@ -44,8 +44,10 @@ def excluir_projeto(id_projeto):
     cursor = conexao.cursor()
     cursor.execute("DELETE FROM projetos WHERE id=?", (id_projeto,))
     conexao.commit()
+    sucesso = cursor.rowcount > 0  # True se deletou alguma linha | False se nenhuma linha foi deletada
     conexao.close()
-    return True
+    return sucesso
+
 
 
 # ============================================================
